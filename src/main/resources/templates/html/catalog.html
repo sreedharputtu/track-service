@@ -1,0 +1,116 @@
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- categories -->
+                <div class="card" style="margin-bottom:20px;padding:10px;border:none;">
+                    <h6 class="card-header d-flex justify-content-between align-items-center">
+                        Categories
+                        <button type="button" class="btn btn-sm btn-info">Add Category</button>
+                    </h6>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>category Id</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Active</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="category : ${categories}">
+                                <td th:text="${category.id}"></td>
+                                <td th:text="${category.name}"></td>
+                                <td th:text="${category.active}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- products -->
+                <div class="card" style="margin-bottom:20px;padding:10px;border:none;">
+                    <h6 class="card-header d-flex justify-content-between align-items-center">
+                       Products
+                        <button type="button" class="btn btn-sm btn-info">Add Product</button>
+                    </h6>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>product Id</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Active</th>
+                                <th>Category</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="product : ${products}">
+                                <td th:text="${product.id}"></td>
+                                <td th:text="${product.name}"></td>
+                                <td th:text="${product.price}"></td>
+                                <td th:text="${product.active}"></td>
+                                <td th:text="${product.category.name}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Modifier options-->
+                <div class="card" style="margin-bottom:20px;padding:10px;border:none;">
+                        <h6 class="card-header d-flex justify-content-between align-items-center">
+                            Modifier Options
+                            <button type="button" class="btn btn-sm btn-info">Add option</button>
+                        </h6>
+                    <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Option Id</th>
+                                    <th>Option Name</th>
+                                    <th>Option Price</th>
+                                    <th>Active</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="option : ${options}">
+                                    <td th:text="${option.id}"></td>
+                                    <td th:text="${option.name}"></td>
+                                    <td th:text="${option.price}"></td>
+                                    <td th:text="${option.active}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                    </div>
+                </div>
+                <!-- Modifier groups-->
+                <div class="card" style="margin-bottom:20px;padding:10px;border:none;">
+                    <h6 class="card-header d-flex justify-content-between align-items-center">
+                        Modifier Groups
+                        <button type="button" class="btn btn-sm btn-info">Add Group</button>
+                    </h6>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Group Id</th>
+                                <th>Group Name</th>
+                                <th>Group Active</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="group : ${groups}">
+                                <td th:text="${group.id}"></td>
+                                <td th:text="${group.name}"></td>
+                                <td th:text="${group.active}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,19 +2,82 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Homepage</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
     <script th:src="@{/webjars/htmx.org/1.9.11/dist/htmx.min.js}" defer></script>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-<main class="my-5">
+<header class="p-3">
     <div class="container">
-        <h1 class="mb-4">Homepage</h1>
-        <p class="mb-5 js-greeting">Hello World!</p>
-        <button>Change greeting</button>
+        <h2 class="text-center">sobop.in</h2>
     </div>
-</main>
+</header>
+<div class="d-flex flex-column wrapper">
+    <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="bg-light sidebar">
+                        <div class="sidebar-sticky">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" hx-get="/stores/list" hx-target="#main_container">Stores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" hx-get="/products/list" hx-target="#main_container">Products</a>
+                                </li>
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Catalogs</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Categories</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/products/list" hx-target="#main_container">Products</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Modifier groups</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Modifier Options</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/stores/page/create" hx-target="#main_container">Create-->
+<!--                                        Store</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/tracks/page/create" hx-target="#main_container">Orders</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link active" hx-get="/tracks/page/create" hx-target="#main_container">Create-->
+<!--                                        track</a>-->
+<!--                                </li>-->
+<!--                                <li class="nav-item">-->
+<!--                                    <a class="nav-link" hx-get="/tracks/page/list" hx-target="#main_container">Manage-->
+<!--                                        tracks</a>-->
+<!--                                </li>-->
+                                <li class="nav-item">
+                                    <a class="nav-link" hx-get="/tracks/page/list"
+                                       hx-target="#main_container">Logout</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" hx-get="/tracks/page/list"
+                                       hx-target="#main_container">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-md-9 mt-10 p-10">
+                    <div id="main_container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 </body>
 </html>

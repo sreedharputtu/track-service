@@ -1,0 +1,41 @@
+<div>
+    <legend>Track details</legend>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" th:value="${track.name}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" class="form-control" id="status" th:value="${track.status}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reference">Reference</label>
+                <input type="text" class="form-control" id="reference" th:value="${track.externalReferenceId}" readonly>
+            </div>
+             <div class="form-group">
+            <label for="customer">Customer</label>
+            <input type="text" class="form-control" id="customer" th:value="${track.customerName}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Customer Email</label>
+                <input type="text" class="form-control" id="customerEmail" th:value="${track.customerEmail}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" th:value="${track.description}" readonly></textarea>
+            </div>
+            <div class="form-group">
+                <label for="updated_at">Updated at</label>
+                <input type="text" class="form-control" id="updated_at" th:value="${track.updatedAt}" readonly>
+            </div>
+            <div class="form-group">
+                 <label for="created_at">Created at</label>
+                <input type="text" class="form-control" id="created_at" th:value="${track.createdAt}" readonly>
+            </div>
+
+        </div>
+    </div>
+</div>

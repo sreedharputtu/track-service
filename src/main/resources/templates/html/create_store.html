@@ -1,0 +1,75 @@
+<div>
+    <div id="store_creation_feedback">
+
+    </div>
+    <form hx-post="/stores" hx-target="#store_creation_feedback" hx-on::after-request=" if(event.detail.successful) this.reset()">
+        <fieldset>
+            <legend>Store</legend>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea  class="form-control" id="description" name="description">
+                </textarea>
+            </div>
+            <div class="mb-3">
+                <label for="registrationType" class="form-label">Registration Type</label>
+                <input type="text" class="form-control" id="registrationType" name="registrationType">
+            </div>
+            <div class="mb-3">
+                <label for="registrationNumber" class="form-label">Registration Number</label>
+                <input type="text" class="form-control" id="registrationNumber" name="registrationNumber">
+            </div>
+            <div class="mb-3">
+                <label for="contactPersonName" class="form-label">Contact Person Name</label>
+                <input type="text" class="form-control" id="contactPersonName" name="contactPersonName" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactPhone" class="form-label">Contact Phone</label>
+                <input type="text" class="form-control" id="contactPhone" name="contactPhone" required>
+            </div>
+            <div class="mb-3">
+                <label for="contactEmail" class="form-label">Contact Email</label>
+                <input type="text" class="form-control" id="contactEmail" name="contactEmail" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="storeType" class="form-label">Store Type</label>
+                <input type="text" class="form-control" id="storeType" name="storeType">
+            </div>
+            <div class="mb-3">
+                <label for="addressLine1" class="form-label">Address Line 1</label>
+                <input type="text" class="form-control" id="addressLine1" name="addressLine1">
+            </div>
+            <div class="mb-3">
+                <label for="addressLine2" class="form-label">Address Line 2</label>
+                <input type="text" class="form-control" id="addressLine2" name="addressLine2">
+            </div>
+            <div class="mb-3">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" class="form-control" id="street" name="street">
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city">
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" name="state">
+            </div>
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country" name="country">
+            </div>
+            <div class="mb-3">
+                <label for="zipCode" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" id="zipCode" name="zipCode">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="button-9" role="button">Submit</button>
+            </div>
+        </fieldset>
+        </form>
+</div>

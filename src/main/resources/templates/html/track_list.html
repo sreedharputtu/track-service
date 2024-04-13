@@ -1,0 +1,25 @@
+<div>
+  <legend>Tracks</legend>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">status</th>
+      <th scope="col">reference</th>
+      <th scope="col">customer name</th>
+      <th scope="col">created at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="track:${response.tracks}" style="cursor: pointer" th:hx-get="@{'/tracks/' + ${track.id}}" hx-target="#main_container">
+      <td th:text="${track.id}"></td>
+      <td th:text="${track.name}"></td>
+      <td th:text="${track.status}"></td>
+      <td th:text="${track.externalReferenceId}"></td>
+      <td th:text="${track.customerName}"></td>
+      <td th:text="${track.createdAt}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

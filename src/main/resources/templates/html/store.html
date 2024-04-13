@@ -1,0 +1,78 @@
+<div style="padding:10px;">
+    <h5>Store Details</h5>
+
+    <div class="row">
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" th:value="${store.name}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" th:value="${store.description}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="active">Active</label>
+            <input type="text" class="form-control" id="active" th:value="${store.active}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="registrationType">Registration Type</label>
+            <input type="text" class="form-control" id="registrationType" th:value="${store.registrationType}"
+                   readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="registrationNumber">Registration Number</label>
+            <input type="text" class="form-control" id="registrationNumber" th:value="${store.registrationNumber}"
+                   readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="contactPersonName">Contact Person Name</label>
+            <input type="text" class="form-control" id="contactPersonName" th:value="${store.contactPersonName}"
+                   readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="contactPhone">Contact Phone</label>
+            <input type="text" class="form-control" id="contactPhone" th:value="${store.contactPhone}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="contactEmail">Contact Email</label>
+            <input type="text" class="form-control" id="contactEmail" th:value="${store.contactEmail}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="storeType">Store Type</label>
+            <input type="text" class="form-control" id="storeType" th:value="${store.storeType}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+        </div>
+        <h6 style="margin-top:10px;margin-bottom:10px">Address Details</h6>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="addressLine1">Address Line 1</label>
+            <input type="text" class="form-control" id="addressLine1" th:value="${store.address.addressLine1}"
+                   readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;" >
+            <label for="addressLine2">Address Line 2</label>
+            <input type="text" class="form-control" id="addressLine2" th:value="${store.address.addressLine2}"
+                   readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="street">Street</label>
+            <input type="text" class="form-control" id="street" th:value="${store.address.street}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city" th:value="${store.address.city}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="state">State</label>
+            <input type="text" class="form-control" id="state" th:value="${store.address.state}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="country">Country</label>
+            <input type="text" class="form-control" id="country" th:value="${store.address.country}" readonly>
+        </div>
+        <div class="form-group col-md-6" style="padding:10px;">
+            <label for="zipCode">Zip Code</label>
+            <input type="text" class="form-control" id="zipCode" th:value="${store.address.zipCode}" readonly>
+        </div>
+    </div>
+</div>
