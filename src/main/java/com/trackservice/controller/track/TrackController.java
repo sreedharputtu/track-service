@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +27,9 @@ public class TrackController {
     private TrackService trackService;
 
     @RequestMapping("/")
-    public String hello() {
+    public String hello(@AuthenticationPrincipal String username , Model model){
+        log.info("username: {}", username);
+        model.addAttribute("username",username);
         return "html/index.html";
     }
 

@@ -16,8 +16,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,13 +38,12 @@ public class StoreService {
         }
     }
 
-    public List<StoreDto> getAllStores(int page, int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        Page<Store> stores = storeRepository.findAll(pageable);
+    public List<StoreDto> getAllStores(List<Long> storeIds) {
+        List<Store> stores = storeRepository.findAllById(storeIds);
         if (ObjectUtils.isEmpty(stores)) {
             throw new RuntimeException("No stores found");
         }
-        return convertStoreToDto(stores.getContent());
+        return convertStoreToDto(stores);
     }
 
     public StoreDto getStoreById(long storeId) {

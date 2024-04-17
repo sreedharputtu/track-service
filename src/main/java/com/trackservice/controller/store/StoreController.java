@@ -3,17 +3,18 @@ package com.trackservice.controller.store;
 import com.trackservice.dto.store.StoreDto;
 import com.trackservice.service.store.StoreService;
 import com.trackservice.util.Validator;
-import jakarta.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -74,17 +75,14 @@ public class StoreController {
     }
 
     @GetMapping("/list")
-    public String getStores(@PathParam(value = "page") Integer page, Model model) {
-        log.info("Page: {}", page);
-        if (page == null) {
-            page = 1;
-        }
-        log.info("Page: {}", page);
-        List<StoreDto> stores = storeService.getAllStores(page-1,DEFAULT_PAGE_SIZE);
+    public String getStores(Model model) {
+        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<Long> storeIds = user.getAuthorities().stream().map(authority->{
+            return Long.parseLong(authority.getAuthority());
+        }).collect(Collectors.toCollection(ArrayList::new));
+        List<StoreDto> stores = storeService.getAllStores(storeIds);
         log.info("Stores: {}", stores);
         model.addAttribute("stores",stores);
-        model.addAttribute("prev_page",page-1);
-        model.addAttribute("next_page",page+1);
         return "html/store_list.html";
     }
 }
