@@ -2,7 +2,7 @@
     <div id="store_creation_feedback">
 
     </div>
-    <form hx-post="/stores" hx-target="#store_creation_feedback" hx-on::after-request=" if(event.detail.successful) this.reset()">
+    <form  hx-on::after-request=" if(event.detail.successful) this.reset()">
         <fieldset>
             <legend>Store</legend>
             <div class="mb-3">
@@ -68,7 +68,7 @@
                 <input type="text" class="form-control" id="zipCode" name="zipCode">
             </div>
             <div class="mb-3">
-                <button type="submit" class="button-9" role="button">Submit</button>
+                <button type="submit" class="button-9" role="button" hx-post="/stores" hx-target="#store_creation_feedback">Submit</button>
             </div>
         </fieldset>
         </form>

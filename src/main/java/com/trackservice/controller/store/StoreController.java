@@ -6,7 +6,9 @@ import com.trackservice.util.Validator;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,15 +39,16 @@ public class StoreController {
 
     @Validated
     @PostMapping
-    public String addStore(@RequestParam Map<String,String> body , Model model) {
+    public String addStore(@AuthenticationPrincipal UserDetails userDetails, @RequestParam Map<String,String> body , Model model) {
         log.info("Request Body: {}", body);
         try{
             Validator.isSaveStoreValid(body);
             StoreDto dto = modelMapper.map(body, StoreDto.class,"store");
             convertAddressDto(dto,body);
             log.info("StoreDto: {}", dto);
+            Long brandId = Long.parseLong(userDetails.getAuthorities().stream().findFirst().get().getAuthority());
+            storeService.addStore(dto , brandId);
             model.addAttribute("msg","Store created successfully");
-            storeService.addStore(dto);
         } catch (Exception e) {
             log.error("Error while creating store: {}", e.getMessage());
             model.addAttribute("msg","Error while creating store");
@@ -75,12 +78,10 @@ public class StoreController {
     }
 
     @GetMapping("/list")
-    public String getStores(Model model) {
-        UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        List<Long> storeIds = user.getAuthorities().stream().map(authority->{
-            return Long.parseLong(authority.getAuthority());
-        }).collect(Collectors.toCollection(ArrayList::new));
-        List<StoreDto> stores = storeService.getAllStores(storeIds);
+    public String getStores(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        List<StoreDto> stores = new ArrayList<>();
+        Long brandId = Long.parseLong(userDetails.getAuthorities().stream().findFirst().get().getAuthority());
+        stores = storeService.getAllStoresByBrandId(brandId);
         log.info("Stores: {}", stores);
         model.addAttribute("stores",stores);
         return "html/store_list.html";

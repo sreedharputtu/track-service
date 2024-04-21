@@ -3,8 +3,10 @@ package com.trackservice.entity.store;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -12,6 +14,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Brand {
     @Id
     @GeneratedValue
@@ -19,4 +22,6 @@ public class Brand {
     private String name;
     private String description;
     private boolean active;
+    private Date createdAt;
+    private Date updatedAt;
 }

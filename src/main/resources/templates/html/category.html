@@ -1,0 +1,36 @@
+<div id="message-banner">
+
+  <div>
+    <h6>Create Category</h6>
+    <div class="mb-3">
+    catalog id: <span th:text="${catalogId}"></span>
+    </div>
+    <form>
+      <fieldset>
+        <div class="form-group mb-3">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+        </div>
+        <div class="form-group mb-3">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" placeholder="Enter description" rows="2"></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="active">Is active</label>
+          <input type="radio" id="active" name="active" value="true"> True
+          <input type="radio" id="not_active" name="active" value="false"> False
+        </div>
+        <h6>Select Products</h6>
+        <div class="form-group mb-3">
+          <select class="form-select" id="products" name="selectedProducts" multiple>
+            <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="button-9" hx-post="/catalogs/1/categories" hx-target="#message-banner">Create</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+</div>

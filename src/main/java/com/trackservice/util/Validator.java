@@ -38,6 +38,18 @@ public class Validator {
         }
     }
 
+    public static void isSaveProductValid(Map<String, String> productData) {
+        if (StringUtils.isBlank(productData.get("name"))) {
+            throw new IllegalArgumentException("Product name is required");
+        }
+        if (StringUtils.isBlank(productData.get("description"))) {
+            throw new IllegalArgumentException("Product description is required");
+        }
+        if (StringUtils.isBlank(productData.get("price"))) {
+            throw new IllegalArgumentException("Product price is required");
+        }
+    }
+
     public static void isSaveStoreValid(Map<String, String> storeData) {
 
         if (StringUtils.isBlank(storeData.get(STORE_NAME))){

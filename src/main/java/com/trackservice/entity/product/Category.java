@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -24,4 +25,8 @@ public class Category {
     private Long brandId;
     @ManyToMany(fetch = FetchType.LAZY)
     Set<Product> products;
+    private Date createdAt;
+    private Date updatedAt;
+    @ManyToOne
+    private Catalog catalog;
 }

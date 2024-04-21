@@ -39,16 +39,27 @@ public class ProductService {
 
     public List<ProductDto> getProductByBrandId(Long brandId)  {
         List<Product> products = productRepository.findByBrandId(brandId);
-        if (ObjectUtils.isEmpty(products)) {
-            throw new RuntimeException("No products found for brandId: " + brandId);
-        }
         return convertProductToDto(products);
+    }
+
+    public void saveProduct(ProductDto productDto,Long brandId) {
+        Product product = Product.builder()
+                .name(productDto.getName())
+                .description(productDto.getDescription())
+                .price(productDto.getPrice())
+                .active(productDto.isActive())
+                .brandId(brandId)
+                .createdAt(new Date())
+                .updatedAt(new Date())
+                .build();
+        productRepository.save(product);
     }
 
     public List<ProductDto> convertProductToDto(List<Product> products) {
        List<ProductDto> productDtos = new ArrayList<>();
         for (Product product : products) {
             ProductDto productDto = ProductDto.builder()
+                    .id(product.getId())
                     .name(product.getName())
                     .description(product.getDescription())
                     .price(product.getPrice())

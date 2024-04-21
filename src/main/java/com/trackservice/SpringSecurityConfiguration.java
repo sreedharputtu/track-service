@@ -23,14 +23,14 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login,/signup,/logout,**/webjars/**,**/resources/**").permitAll()
+                        .requestMatchers("/login,/signup,/logout,**/webjars/**,**/resources/**,/error").permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest()
                         .authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/tracks/")
+                        .defaultSuccessUrl("/home")
                         .permitAll()
                 ).logout((logout) -> logout.permitAll());
         return http.build();

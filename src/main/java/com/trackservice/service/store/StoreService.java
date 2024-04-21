@@ -4,22 +4,19 @@ import com.trackservice.dto.address.AddressDto;
 import com.trackservice.dto.store.StoreDto;
 import com.trackservice.entity.address.Address;
 import com.trackservice.entity.product.Catalog;
+import com.trackservice.entity.store.Brand;
 import com.trackservice.entity.store.Store;
+import com.trackservice.repository.brand.BrandRepository;
 import com.trackservice.repository.catalog.CatalogRepository;
 import com.trackservice.repository.store.StoreRepository;
 import com.trackservice.util.CommonUtils;
 import io.micrometer.common.util.StringUtils;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,15 +24,29 @@ import java.util.stream.Collectors;
 public class StoreService {
     private final StoreRepository storeRepository;
     private final CatalogRepository catalogueRepository;
+    private final BrandRepository   brandRepository;
 
-    public void addStore(StoreDto storeDto) throws Exception{
+    public void addStore(StoreDto storeDto , Long brandId) throws Exception{
         try {
+            Brand brand = brandRepository.getById(brandId);
+            if (brand == null) {
+                throw new Exception("brand not found");
+            }
             Store store = convertDtoToStore(storeDto);
+            store.setBrand(brand);
             storeRepository.save(store);
             catalogueRepository.save(createDefaultCatalogue(store));
         } catch (Exception e) {
             throw new Exception("Error while creating store");
         }
+    }
+
+    public List<StoreDto> getAllStoresByBrandId(Long brandId) {
+        List<Store> stores = storeRepository.findByBrandId(brandId);
+        if (ObjectUtils.isEmpty(stores)) {
+            throw new RuntimeException("No stores found");
+        }
+        return convertStoreToDto(stores);
     }
 
     public List<StoreDto> getAllStores(List<Long> storeIds) {

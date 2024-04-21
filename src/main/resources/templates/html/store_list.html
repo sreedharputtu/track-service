@@ -1,66 +1,30 @@
-<style>
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-}
-
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
-}
-</style>
 
 <div class="card" style="margin-bottom:20px;padding:10px;border:none;" id="stores_table">
     <h6 class="card-header d-flex justify-content-between align-items-center">
         Stores
-        <button type="button" class="btn btn-sm btn-primary" th:hx-post="@{'/stores/page/create'}" hx-target="#main_container">Create Store</button>
+        <button type="button" class="btn btn-sm btn-primary" th:hx-get="@{'/stores/page/create'}" hx-target="#main_container">Create Store</button>
     </h6>
     <div class="card-body">
         <div>
             <table class="styled-table" style="cursor:pointer;">
+                <thead>
                 <tr>
                     <th>Store Name</th>
                     <th>City</th>
                     <th>Active</th>
                     <th>Created date</th>
+                    <th>Catalog</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr th:each="store : ${stores}" th:hx-get="@{'/stores/' + ${store.id}}" hx-target="#main_container" style="padding:20px;">
                     <td th:text="${store.name}"></td>
                     <td th:text="${store.address.city}"></td>
                     <td th:text="${store.active}"></td>
                     <td th:text="${store.createdAt}"></td>
+                    <td><a href="" th:hx-get="@{'/catalogs/' + ${store.id}}" hx-target="#main_container">Manage Catalog</a></td>
                 </tr>
-                <tv>
-                    <td>dummy row</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tv>
+                </tbody>
             </table>
 <!--            <nav aria-label="Page navigation example">-->
 <!--                <ul class="pagination justify-content-center">-->

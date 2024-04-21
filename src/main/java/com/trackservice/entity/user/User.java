@@ -25,5 +25,5 @@ public class User {
     private String role;
     private String firstName;
     private String lastName;
-    private Integer[] scopedIds;
+    private Set<Long> scopedIds;
 }

@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "catalogs")
@@ -26,4 +27,6 @@ public class Catalog {
     private boolean active;
     private Date createdAt;
     private Date updatedAt;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "catalog")
+    private Set<Category> categories;
 }

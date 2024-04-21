@@ -31,7 +31,7 @@ public class UserService implements UserDetailsService {
         }
 
         ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        for (Integer scopedId : user.getScopedIds()) {
+        for (Long scopedId : user.getScopedIds()) {
             authorities.add(new SimpleGrantedAuthority("" + scopedId));
         }
 

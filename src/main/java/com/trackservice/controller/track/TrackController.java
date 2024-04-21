@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -25,13 +26,6 @@ public class TrackController {
     private ModelMapper modelMapper;
     @Autowired
     private TrackService trackService;
-
-    @RequestMapping("/")
-    public String hello(@AuthenticationPrincipal String username , Model model){
-        log.info("username: {}", username);
-        model.addAttribute("username",username);
-        return "html/index.html";
-    }
 
     @GetMapping("/page/create")
     public String getCreateTrackPage() {
