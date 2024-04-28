@@ -43,9 +43,6 @@ public class StoreService {
 
     public List<StoreDto> getAllStoresByBrandId(Long brandId) {
         List<Store> stores = storeRepository.findByBrandId(brandId);
-        if (ObjectUtils.isEmpty(stores)) {
-            throw new RuntimeException("No stores found");
-        }
         return convertStoreToDto(stores);
     }
 

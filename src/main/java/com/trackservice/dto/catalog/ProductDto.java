@@ -29,8 +29,12 @@ public class ProductDto {
     private String imageUrl;
     @JsonProperty("active")
     private boolean active;
-    @JsonProperty("createdAt")
+    @JsonProperty("stock")
+    private Integer stock;
+    @JsonProperty("groups")
     private List<ModifierGroupDto> modifierGroups;
+    @JsonProperty("created_at")
     private String createdAt;
+    @JsonProperty("updated_at")
     private String updatedAt;
 }

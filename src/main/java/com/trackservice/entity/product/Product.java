@@ -28,6 +28,7 @@ public class Product {
     private String imageUrl;
     @ManyToMany(fetch = FetchType.LAZY)
     private Set<ModifierGroup> modifierGroups;
+    private Integer stock;
     private Date createdAt;
     private Date updatedAt;
 }

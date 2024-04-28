@@ -10,11 +10,89 @@
     <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}" defer></script>
     <script th:src="@{/webjars/htmx.org/1.9.11/dist/htmx.min.js}" defer></script>
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script th:inline="javascript">
     const token = /*[[${_csrf.token}]]*/ "token";
 
     </script>
     <style>
+
+    .roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.robot-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+
 .styled-table {
     width: 100%;
     border-collapse: collapse;
@@ -50,6 +128,15 @@
     color: #009879;
 }
 
+body {
+   margin: 0; // 1
+   font-family: $font-family-base;
+}
+
+.no-border {
+    border:none;
+}
+
     </style>
 </head>
 <body hx-headers='js:{"X-CSRF-TOKEN": token}'>
@@ -69,48 +156,20 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link active" hx-get="/stores/list"
-                                       hx-target="#main_container">Stores</a>
+                                       hx-target="#main_container">
+                                        <i class="bi bi-shop"></i> &nbsp;Stores
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" hx-get="/products/list" hx-target="#main_container">Products</a>
-                                </li>
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Catalogs</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Categories</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/products/list" hx-target="#main_container">Products</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Modifier groups</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/catalogs/list" hx-target="#main_container">Modifier Options</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/stores/page/create" hx-target="#main_container">Create-->
-                                <!--                                        Store</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/tracks/page/create" hx-target="#main_container">Orders</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link active" hx-get="/tracks/page/create" hx-target="#main_container">Create-->
-                                <!--                                        track</a>-->
-                                <!--                                </li>-->
-                                <!--                                <li class="nav-item">-->
-                                <!--                                    <a class="nav-link" hx-get="/tracks/page/list" hx-target="#main_container">Manage-->
-                                <!--                                        tracks</a>-->
-                                <!--                                </li>-->
-                                <li class="nav-item">
-                                    <a class="nav-link" hx-get="/tracks/page/list"
-                                       hx-target="#main_container">Logout</a>
+                                    <a class="nav-link active" hx-get="/products/list" hx-target="#main_container"><i class="bi bi-box"></i>&nbsp;Products</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" hx-get="/tracks/page/list"
-                                       hx-target="#main_container">Profile</a>
+                                       hx-target="#main_container"><i class="bi bi-person-circle"></i>&nbsp;Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" hx-get="/tracks/page/list"
+                                       hx-target="#main_container"><i class="bi bi-box-arrow-left"></i>&nbsp;Logout</a>
                                 </li>
                             </ul>
                         </div>

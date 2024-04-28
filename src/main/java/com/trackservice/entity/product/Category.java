@@ -27,6 +27,4 @@ public class Category {
     Set<Product> products;
     private Date createdAt;
     private Date updatedAt;
-    @ManyToOne
-    private Catalog catalog;
 }

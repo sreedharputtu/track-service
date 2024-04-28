@@ -17,5 +17,6 @@ public class CategoryDto {
     private long id;
     private String name;
     private String description;
+    private boolean active;
     private List<ProductDto> products;
 }

@@ -23,7 +23,8 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/login,/signup,/logout,**/webjars/**,**/resources/**,/error").permitAll()
+                        .requestMatchers("/login,/logout,**/webjars/**,**/resources/**,/error").permitAll()
+                        .requestMatchers("/register").permitAll()
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .anyRequest()
                         .authenticated()

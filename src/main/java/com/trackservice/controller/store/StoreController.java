@@ -80,8 +80,10 @@ public class StoreController {
     @GetMapping("/list")
     public String getStores(@AuthenticationPrincipal UserDetails userDetails, Model model) {
         List<StoreDto> stores = new ArrayList<>();
-        Long brandId = Long.parseLong(userDetails.getAuthorities().stream().findFirst().get().getAuthority());
-        stores = storeService.getAllStoresByBrandId(brandId);
+        if (!userDetails.getAuthorities().isEmpty()) {
+            Long brandId = Long.parseLong(userDetails.getAuthorities().stream().findFirst().get().getAuthority());
+            stores = storeService.getAllStoresByBrandId(brandId);
+        }
         log.info("Stores: {}", stores);
         model.addAttribute("stores",stores);
         return "html/store_list.html";

@@ -31,17 +31,13 @@ public class CatalogController {
     private ModelMapper modelMapper;
 
     @RequestMapping("/{storeId}")
-    public String getCatalogById(@PathParam("storeId") String storeIdParam, Model model) {
+    public String getCatalogByStoreId(@PathParam("storeId") String storeIdParam, Model model) {
         Long storeId = 1L;
         log.info("Getting catalog by storeId: {}", storeId);
         model.addAttribute("storeId", storeId);
         CatalogDto catalog = catalogService.getCatalogs(storeId);
         model.addAttribute("catalog", catalog);
-        return "html/catalog.html";
-    }
-
-    @RequestMapping("/create")
-    public String createCatalog() {
+        log.info("Catalog: {}", catalog);
         return "html/catalog.html";
     }
 

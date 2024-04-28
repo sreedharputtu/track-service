@@ -20,4 +20,10 @@ public class LoginController {
         return "html/index.html";
     }
 
+    @RequestMapping("/register")
+    public String register(Model model){
+        return "html/register.html";
+    }
+
+
 }

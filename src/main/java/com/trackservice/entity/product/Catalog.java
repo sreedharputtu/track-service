@@ -27,6 +27,6 @@ public class Catalog {
     private boolean active;
     private Date createdAt;
     private Date updatedAt;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "catalog")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Category> categories;
 }
