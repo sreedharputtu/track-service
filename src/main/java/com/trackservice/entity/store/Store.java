@@ -24,7 +24,6 @@ public class Store {
     private String description;
     @OneToOne(cascade = CascadeType.ALL,targetEntity = Address.class, optional = false)
     private Address address;
-    private boolean active;
     private String contactPhone;
     private String contactEmail;
     private String contactPersonName;
